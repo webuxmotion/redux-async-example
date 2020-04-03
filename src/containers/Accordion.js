@@ -11,7 +11,9 @@ class Accordion extends Component {
   }
 
   componentDidUpdate(prevProps) {
+
   }
+
   render() {
     const { post } = this.props
     const isEmpty = post.items.length === 0

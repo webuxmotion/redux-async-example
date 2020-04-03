@@ -1,3 +1,5 @@
+import sender from 'edsukraine-sender'
+
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
@@ -44,11 +46,8 @@ export const resetPost = () => ({
 export const fetchPost = () => dispatch => {
   dispatch(resetPost())
   dispatch(getPost())
-  return fetch(`https://jsonplaceholder.typicode.com/posts`)
-    .then(response => response.json())
-    .then(json => {
-      dispatch(receivePost(json))
-    })
+  return sender('GET', 'https://jsonplaceholder.typicode.com/posts')
+    .then(data => dispatch(receivePost(data)))
 }
 
 const fetchPosts = subreddit => dispatch => {
