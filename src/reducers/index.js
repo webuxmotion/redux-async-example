@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 import {
   SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT,
   REQUEST_POSTS, RECEIVE_POSTS,
-  GET_POST, RECEIVE_POST
+  GET_POST, RECEIVE_POST,
+  RESET_POST
 } from '../actions'
 
 const selectedSubreddit = (state = 'reactjs', action) => {
@@ -29,6 +30,12 @@ const post = (state = {
         ...state,
         isFetching: false,
         items: action.payload
+      }
+    case RESET_POST:
+      return {
+        ...state,
+        isFetching: false,
+        items: []
       }
     default:
       return state

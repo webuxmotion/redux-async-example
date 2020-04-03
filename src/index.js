@@ -9,7 +9,9 @@ import { createLogger } from 'redux-logger'
 import reducer from './reducers'
 import App from './containers/App'
 import Post from './containers/Posts'
+import Accordion from './containers/Accordion'
 import { Route, Switch, Link } from 'react-router-dom'
+import './styles.css'
 
 
 const middleware = [ thunk ]
@@ -35,11 +37,15 @@ render(
           <li>
             <Link to="/posts">Posts</Link>
           </li>
+          <li>
+            <Link to="/accordion">Accordion</Link>
+          </li>
         </ul>
       </div>
       <Switch>
         <Route path="/" exact component={App} />
         <Route path="/posts" exact component={Post} />
+        <Route path="/accordion" exact component={Accordion} />
         <Route path="/" component={() => <div>404</div>} />
       </Switch>
     </Provider>

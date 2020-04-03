@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchPost } from '../actions'
-import Accordion from '../components/Accordion/Accordion'
+import AccordionComponent from '../components/Accordion/Accordion'
 
-class Post extends Component {
+class Accordion extends Component {
   componentDidMount() {
     const { dispatch } = this.props
     dispatch(fetchPost())
@@ -18,12 +18,11 @@ class Post extends Component {
     
     return (
       <div>
-        <button onClick={() => this.props.dispatch(fetchPost())}>Reload</button>
         {isEmpty
           ? (post.isFetching ? <h2>Loading...</h2> : <h2>Empty.</h2>)
           : (<div>
             {post.items.map((post, i) => {
-              return <Accordion 
+              return <AccordionComponent 
                 key={i}
                 title={post.title}
                 content={post.body}
@@ -43,8 +42,8 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Post)
+export default connect(mapStateToProps)(Accordion)
 
-Post.propTypes = {
+Accordion.propTypes = {
   post: PropTypes.object.isRequired,
 }

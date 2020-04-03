@@ -4,6 +4,7 @@ export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 export const GET_POST = 'GET_POST'
 export const RECEIVE_POST = 'RECEIVE_POST'
+export const RESET_POST = 'RESET_POST'
 
 export const selectSubreddit = subreddit => ({
   type: SELECT_SUBREDDIT,
@@ -36,7 +37,12 @@ export const getPost = () => ({
   type: GET_POST
 })
 
+export const resetPost = () => ({
+  type: RESET_POST
+})
+
 export const fetchPost = () => dispatch => {
+  dispatch(resetPost())
   dispatch(getPost())
   return fetch(`https://jsonplaceholder.typicode.com/posts`)
     .then(response => response.json())
