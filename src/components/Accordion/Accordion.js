@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import PropTypes from 'prop-types'
 import Chevron from "../Chevron";
-import "./accordion.css";
+//import "./accordion.css";
 
 function Accordion({ title, content }) {
   const [setActive, setActiveState] = useState(""); 

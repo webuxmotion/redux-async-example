@@ -10,6 +10,7 @@ import reducer from './reducers'
 import App from './containers/App'
 import Post from './containers/Posts'
 import Accordion from './containers/Accordion'
+import List from './containers/List'
 import { Route, Switch, Link } from 'react-router-dom'
 import './styles.css'
 
@@ -40,12 +41,16 @@ render(
           <li>
             <Link to="/accordion">Accordion</Link>
           </li>
+          <li>
+            <Link to="/list">List</Link>
+          </li>
         </ul>
       </div>
       <Switch>
         <Route path="/" exact component={App} />
         <Route path="/posts" exact component={Post} />
         <Route path="/accordion" exact component={Accordion} />
+        <Route path="/list" exact component={List} />
         <Route path="/" component={() => <div>404</div>} />
       </Switch>
     </Provider>
